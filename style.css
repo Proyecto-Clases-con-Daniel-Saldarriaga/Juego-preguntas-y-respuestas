@@ -1,0 +1,131 @@
+*{
+    transition: all 0.3s;
+}
+
+body{
+    background-color: cadetblue;
+    padding: 0;
+    margin: 0;
+    text-align: center;
+    font-family:Arial, Helvetica, sans-serif;
+    font-size: 120%;
+}
+
+.header{
+    width: 98vw;
+    height: 5vh;
+
+    display: inline-flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid white;
+}
+
+.contenedor{
+    width: 98vw;
+    height: 92vh;
+
+    display: inline-flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid white;
+}
+
+.encabezado{
+    background: white;
+    min-width: 300px;
+    width: 70%;
+    max-width:600px;
+    padding: 10px;
+
+}
+
+.numeroCategoria{
+    background: white;
+    min-width: 300px;
+    width: 70%;
+    padding: 10px;
+    opacity: 0.8;
+}
+
+.categoria{
+    opacity: 0.3;
+    text-align: left;
+}
+
+.pregunta{
+    padding: 10px;;
+}
+
+.imagen{
+    object-fit: cover;
+    height: 200px;
+    width: 100%;
+}
+
+.btn{
+    background: white;
+    width: 60%;
+    max-width: 550px;
+    padding: 10px;
+    margin: 5px;
+}
+
+.btn:hover{
+    width: 65%;
+    cursor: pointer;
+}
+
+.numero{
+    position: absolute;
+    opacity: 0.3;
+    top: 10px;
+    right: 10px;
+}
+
+.puntaje{
+    display: flex;
+    flex-direction: column;
+    padding: 7px;
+    margin: 5px;;
+    color: white;
+    border: 1px solid black;
+    border-radius: 10px;
+}
+
+.dinero{
+    display: flex;
+    flex-direction: column;
+    padding: 7px;
+    margin: 5px;
+    color: white;
+    border: 1px solid black;
+    border-radius: 10px;
+}
+
+.etiqueta{
+    font-size: 12px;
+    color:white;
+    width: 250px;
+    padding: 5px;
+    border: 1px solid black;
+    padding: 5px;
+    margin: 5px;
+}
+
+.input{
+    padding: 5px;
+    margin: 5px;
+    border-radius: 10px;
+    border: 0px;
+}
+
+.etiquetaPuntaje{
+    font-size: 14px;
+}
+
+.etiquetaDinero{
+    font-size: 14px;
+}
