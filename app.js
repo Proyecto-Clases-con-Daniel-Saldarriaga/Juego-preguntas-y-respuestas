@@ -20,9 +20,11 @@
 
         let preguntas_hechas = 0;
         let preguntas_correctas = 0;
-        let dinero_recibido = 0;
-        let precio = 0;
+        let valor = 0;
 
+        
+
+        //Hace aleatorias las preguntas
         function escogerPreguntaAleatoria(){
             let n;
             if (preguntas_aleatorias){
@@ -31,28 +33,24 @@
                 n = 0;
             }
 
-            while (npreguntas.includes(n)) {
+            while (npreguntas.includes(n)) { //cambié n por n-20
                 n++;
-                if(n >= interprete_bp1.length) {
+                if(n > 6) { // cambié interprete_bp1.length por 5
                     n = 0;
                 }
-                if (npreguntas.length == interprete_bp1.length) {
+                if (npreguntas.length == 6) {
                     //En esta parte se reinicia el juego
                     if( mostrar_pantalla_juego_terminado) {
-                        swal.fire({
+                        swal
+                        .fire({
                             title: "Juego finalizado",
-                            text1:
-                            "Puntuación: " + preguntas_correctas + "/" + (preguntas_hechas - 1),
-                            text2:
-                            "Dinero: " + dinero_recibido + "/" + (preguntas_correctas * 100),
-                            icon: "success"
+                            text:
+                            "Puntuación: " + preguntas_correctas + "/" + preguntas_hechas + "   Dinero: " + 
+                    + valor
                         });
+                        return npreguntas = [];
                     }
-                    if(reiniciar_puntos_al_reiniciar_el_juego) {
-                        preguntas_correctas = 0
-                        preguntas_hechas = 0
-                    }
-                    npreguntas = [];
+                    
                 }
             }
             npreguntas.push(n);
@@ -67,16 +65,27 @@
             select_id("categoria").innerHTML = pregunta.categoria;
             select_id("pregunta").innerHTML = pregunta.pregunta;
             select_id("numero").innerHTML = n;
+            
             let pc = preguntas_correctas;
 
-            
-            if (preguntas_hechas >= 1){
+            //Incrementa puntaje y dinero
+            if (preguntas_hechas > 1){
                 select_id("puntaje").innerHTML = pc + "/" + (preguntas_hechas - 1);
             }else {
                 select_id("puntaje").innerHTML = "";
             }
-            if (preguntas_hechas > 1){
-                select_id("dinero").innerHTML = "$" + (precio += 10);
+            if(preguntas_hechas > 6){
+
+                swal.fire({
+                    title: "Juego finalizado",
+                    text:
+                    "Puntuación: " + preguntas_correctas + "/" + preguntas_hechas + " Dinero: " + 
+                    + valor,
+                });
+                return npreguntas = [];
+            }
+            if (preguntas_correctas > 0){
+                select_id("dinero").innerHTML = "$" + (valor += 100);
             }else {
                 select_id("dinero").innerHTML = "";
             }
@@ -95,6 +104,8 @@
                 }, 500);
             }
         }
+
+        
             
         function desordenarRespuestas(pregunta){
             posibles_respuestas = [
@@ -123,15 +134,25 @@
                 btn_correspondiente[i].style.background = "yellowgreen"
             }else{
                 btn_correspondiente[i].style.background ="red"
-                swal.fire({
-                    title: "Juego finalizado",
-                    text1:
-                    "Puntuación: " + preguntas_correctas + "/" + (preguntas_hechas - 1),
-                    text2:
-                    "Dinero: " + dinero_recibido + "/" + (preguntas_correctas * 100),
-                    icon: "success"
-                });
-            }
+                preguntas_hechas = 0;
+                preguntas_correctas = 0;
+                valor = 0;
+                //Iniciar en pregunta 1
+                pregunta.ronda[1];
+                //Alert que finaliza el juego
+                swal
+                        .fire({
+                            title: "Juego finalizado, perdiste el puntaje acumulado",
+                            text:
+                            "Puntuación: " + preguntas_correctas + "/" + preguntas_hechas + "   Dinero: " + 
+                    + valor
+                        });
+                    }
+                // Preguntar si quiere pasar al siguiente nivel
+                function obtenerDatos(){
+                    var nombre = document.get
+                }
+
             for(let j = 0; j < 4; j++) {
                 if(posibles_respuestas[j] == pregunta.respuesta){
                     btn_correspondiente[j].style.background = "yellowgreen";
