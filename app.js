@@ -20,39 +20,45 @@
 
         let preguntas_hechas = 0;
         let preguntas_correctas = 0;
-        let dinero_recibido = 0;
-        let precio = 0;
+        let valor = 0;
 
+        
+
+        //Hace aleatorias las preguntas
         function escogerPreguntaAleatoria(){
             let n;
             if (preguntas_aleatorias){
-                n = Math.floor(Math.random() * interprete_bp1.length);
+                n = Math.floor(Math.random() * interprete_bp1[0].length);
             }else {
                 n = 0;
             }
-
-            while (npreguntas.includes(n)) {
+        
+            while (npreguntas.includes(n)) { //cambié n por n-20
                 n++;
-                if(n >= interprete_bp1.length) {
-                    n = 0;
+                if(n > 6) { // cambié interprete_bp1.length por 5
+                    n=0;
                 }
-                if (npreguntas.length == interprete_bp1.length) {
-                    //En esta parte se reinicia el juego
+                if (npreguntas.length == 6) {
+                    //Iniciar en pregunta 1
+                    npreguntas.length[0];
+                    //Pantalla de juego terminado
                     if( mostrar_pantalla_juego_terminado) {
-                        swal.fire({
+                        
+                        swal
+                        .fire({
                             title: "Juego finalizado",
-                            text1:
-                            "Puntuación: " + preguntas_correctas + "/" + (preguntas_hechas - 1),
-                            text2:
-                            "Dinero: " + dinero_recibido + "/" + (preguntas_correctas * 100),
-                            icon: "success"
+                            text:
+                            "Puntuación: " + preguntas_correctas + "/" + preguntas_hechas + "   Dinero: " + 
+                        + valor
                         });
+                        //En esta parte se reinicia el juego
+                        preguntas_hechas = 0;
+                        preguntas_correctas = 0;
+                        valor = 0;
+                        return npreguntas = [];
                     }
-                    if(reiniciar_puntos_al_reiniciar_el_juego) {
-                        preguntas_correctas = 0
-                        preguntas_hechas = 0
-                    }
-                    npreguntas = [];
+
+                    
                 }
             }
             npreguntas.push(n);
@@ -67,16 +73,76 @@
             select_id("categoria").innerHTML = pregunta.categoria;
             select_id("pregunta").innerHTML = pregunta.pregunta;
             select_id("numero").innerHTML = n;
+            
             let pc = preguntas_correctas;
 
-            
-            if (preguntas_hechas >= 1){
+            //Incrementa puntaje y dinero
+            if (preguntas_hechas > 1){
                 select_id("puntaje").innerHTML = pc + "/" + (preguntas_hechas - 1);
             }else {
                 select_id("puntaje").innerHTML = "";
             }
-            if (preguntas_hechas > 1){
-                select_id("dinero").innerHTML = "$" + (precio += 10);
+
+
+            
+            if(preguntas_hechas > 6 && preguntas_hechas < 12){
+                //Iniciar en pregunta 1
+                npreguntas[5];
+                //Función escogerPreguntaAleatoria2
+                    function escogerPreguntaAleatoria2(){
+                        let n;
+                        if (preguntas_aleatorias){
+                            n = Math.floor(Math.random() * interprete_bp1.length);
+                        }else {
+                            n = 0;
+                        }
+                    
+            
+                        while (npreguntas.includes(n)) { //cambié n por n-20
+                            n++;
+                            if(n > 12) { // cambié interprete_bp1.length por 5
+                                n = 0;
+                            }
+                            if (npreguntas.length == 12) {
+                                
+                                //Iniciar en pregunta 6
+                                npreguntas[5];
+                                //Pantalla de juego terminado
+                                if( mostrar_pantalla_juego_terminado) {
+                                    swal
+                                    .fire({
+                                        title: "Juego finalizado",
+                                        text:
+                                        "Puntuación: " + preguntas_correctas + "/" + preguntas_hechas + "   Dinero: " + 
+                                + valor
+                                    });
+                                    return npreguntas = [];
+                                }
+                                //En esta parte se reinicia el juego
+                                preguntas_hechas = 0;
+                                preguntas_correctas = 0;
+                                valor = 0;
+                                
+                            }
+                        }
+                        npreguntas.push(n);
+                        preguntas_hechas++;
+            
+                        escogerPregunta(n);        
+                    }
+
+                //Pantalla de juego terminado
+                swal.fire({
+                    title: "Juego finalizado",
+                    text:
+                    "Puntuación: " + (preguntas_correctas) + "/" + (preguntas_hechas) + " Dinero: " + 
+                    + valor,
+                });
+                return npreguntas = [];
+            }
+
+            if (preguntas_correctas > 0){
+                select_id("dinero").innerHTML = "$" + (valor += 100);
             }else {
                 select_id("dinero").innerHTML = "";
             }
@@ -95,6 +161,8 @@
                 }, 500);
             }
         }
+
+        
             
         function desordenarRespuestas(pregunta){
             posibles_respuestas = [
@@ -123,15 +191,33 @@
                 btn_correspondiente[i].style.background = "yellowgreen"
             }else{
                 btn_correspondiente[i].style.background ="red"
-                swal.fire({
-                    title: "Juego finalizado",
-                    text1:
-                    "Puntuación: " + preguntas_correctas + "/" + (preguntas_hechas - 1),
-                    text2:
-                    "Dinero: " + dinero_recibido + "/" + (preguntas_correctas * 100),
-                    icon: "success"
-                });
-            }
+                preguntas_hechas = 0;
+                preguntas_correctas = 0;
+                valor = 0;
+                //Iniciar en pregunta 1
+                if(npreguntas > 0 && npreguntas < 5){
+                    npreguntas.length[0];
+                }else if(npreguntas >= 5 && npreguntas < 10){
+                    npreguntas.length[4]
+                }else if(npreguntas >= 10 && npreguntas < 15){
+                    npreguntas.length[9]
+                }else if(npreguntas >= 15 && npreguntas < 20){
+                    npreguntas.length[14]
+                }else if(npreguntas >= 20 && npreguntas < 25){
+                    npreguntas.length[19]
+                }
+                
+                //Alert que finaliza el juego
+                swal
+                        .fire({
+                            title: "Juego finalizado, perdiste el puntaje acumulado",
+                            text:
+                            "Puntuación: " + preguntas_correctas + "/" + preguntas_hechas + "   Dinero: " + 
+                    + valor
+                        });
+                    }
+
+
             for(let j = 0; j < 4; j++) {
                 if(posibles_respuestas[j] == pregunta.respuesta){
                     btn_correspondiente[j].style.background = "yellowgreen";
