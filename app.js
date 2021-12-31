@@ -32,14 +32,16 @@
             }else {
                 n = 0;
             }
-
+        
             while (npreguntas.includes(n)) { //cambié n por n-20
                 n++;
                 if(n > 6) { // cambié interprete_bp1.length por 5
                     n = 0;
                 }
                 if (npreguntas.length == 6) {
-                    //En esta parte se reinicia el juego
+                    //Iniciar en pregunta 1
+                    npreguntas[5];
+                    //Pantalla de juego terminado
                     if( mostrar_pantalla_juego_terminado) {
                         swal
                         .fire({
@@ -50,6 +52,10 @@
                         });
                         return npreguntas = [];
                     }
+                    //En esta parte se reinicia el juego
+                    preguntas_hechas = 0;
+                    preguntas_correctas = 0;
+                    valor = 0;
                     
                 }
             }
@@ -74,16 +80,65 @@
             }else {
                 select_id("puntaje").innerHTML = "";
             }
-            if(preguntas_hechas > 6){
 
+
+            
+            if(preguntas_hechas > 6 && preguntas_hechas < 12){
+                //Iniciar en pregunta 1
+                npreguntas[5];
+                //Función escogerPreguntaAleatoria2
+                    function escogerPreguntaAleatoria2(){
+                        let n;
+                        if (preguntas_aleatorias){
+                            n = Math.floor(Math.random() * interprete_bp1.length);
+                        }else {
+                            n = 0;
+                        }
+                    
+            
+                        while (npreguntas.includes(n)) { //cambié n por n-20
+                            n++;
+                            if(n > 12) { // cambié interprete_bp1.length por 5
+                                n = 0;
+                            }
+                            if (npreguntas.length == 12) {
+                                
+                                //Iniciar en pregunta 6
+                                npreguntas[5];
+                                //Pantalla de juego terminado
+                                if( mostrar_pantalla_juego_terminado) {
+                                    swal
+                                    .fire({
+                                        title: "Juego finalizado",
+                                        text:
+                                        "Puntuación: " + preguntas_correctas + "/" + preguntas_hechas + "   Dinero: " + 
+                                + valor
+                                    });
+                                    return npreguntas = [];
+                                }
+                                //En esta parte se reinicia el juego
+                                preguntas_hechas = 0;
+                                preguntas_correctas = 0;
+                                valor = 0;
+                                
+                            }
+                        }
+                        npreguntas.push(n);
+                        preguntas_hechas++;
+            
+                        escogerPregunta(n);        
+                    }
+
+                //Pantalla de juego terminado
                 swal.fire({
                     title: "Juego finalizado",
                     text:
-                    "Puntuación: " + preguntas_correctas + "/" + preguntas_hechas + " Dinero: " + 
+                    "Puntuación: " + (preguntas_correctas) + "/" + (preguntas_hechas) + " Dinero: " + 
                     + valor,
                 });
                 return npreguntas = [];
             }
+
             if (preguntas_correctas > 0){
                 select_id("dinero").innerHTML = "$" + (valor += 100);
             }else {
@@ -138,7 +193,18 @@
                 preguntas_correctas = 0;
                 valor = 0;
                 //Iniciar en pregunta 1
-                pregunta.ronda[1];
+                if(npreguntas > 0 && npreguntas < 5){
+                    npreguntas.length[0];
+                }else if(npreguntas >= 5 && npreguntas < 10){
+                    npreguntas.length[4]
+                }else if(npreguntas >= 10 && npreguntas < 15){
+                    npreguntas.length[9]
+                }else if(npreguntas >= 15 && npreguntas < 20){
+                    npreguntas.length[14]
+                }else if(npreguntas >= 20 && npreguntas < 25){
+                    npreguntas.length[19]
+                }
+                
                 //Alert que finaliza el juego
                 swal
                         .fire({
@@ -148,10 +214,7 @@
                     + valor
                         });
                     }
-                // Preguntar si quiere pasar al siguiente nivel
-                function obtenerDatos(){
-                    var nombre = document.get
-                }
+
 
             for(let j = 0; j < 4; j++) {
                 if(posibles_respuestas[j] == pregunta.respuesta){
