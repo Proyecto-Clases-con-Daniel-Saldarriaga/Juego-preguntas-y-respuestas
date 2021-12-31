@@ -28,7 +28,7 @@
         function escogerPreguntaAleatoria(){
             let n;
             if (preguntas_aleatorias){
-                n = Math.floor(Math.random() * interprete_bp1.length);
+                n = Math.floor(Math.random() * interprete_bp1[0].length);
             }else {
                 n = 0;
             }
@@ -36,26 +36,28 @@
             while (npreguntas.includes(n)) { //cambié n por n-20
                 n++;
                 if(n > 6) { // cambié interprete_bp1.length por 5
-                    n = 0;
+                    n=0;
                 }
                 if (npreguntas.length == 6) {
                     //Iniciar en pregunta 1
-                    npreguntas[5];
+                    npreguntas.length[0];
                     //Pantalla de juego terminado
                     if( mostrar_pantalla_juego_terminado) {
+                        
                         swal
                         .fire({
                             title: "Juego finalizado",
                             text:
                             "Puntuación: " + preguntas_correctas + "/" + preguntas_hechas + "   Dinero: " + 
-                    + valor
+                        + valor
                         });
+                        //En esta parte se reinicia el juego
+                        preguntas_hechas = 0;
+                        preguntas_correctas = 0;
+                        valor = 0;
                         return npreguntas = [];
                     }
-                    //En esta parte se reinicia el juego
-                    preguntas_hechas = 0;
-                    preguntas_correctas = 0;
-                    valor = 0;
+
                     
                 }
             }
