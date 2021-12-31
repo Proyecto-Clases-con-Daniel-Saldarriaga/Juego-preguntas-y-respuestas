@@ -28,23 +28,23 @@
         function escogerPreguntaAleatoria(){
             let n;
             if (preguntas_aleatorias){
-                n = Math.floor(Math.random() * interprete_bp1[0].length);
+                n = Math.floor(Math.random() * interprete_bp1.length);
             }else {
                 n = 0;
             }
         
             while (npreguntas.includes(n)) { //cambié n por n-20
                 n++;
-                if(n > 6) { // cambié interprete_bp1.length por 5
+                if(n > 25) { // cambié interprete_bp1.length por 5
                     n=0;
                 }
-                if (npreguntas.length == 6) {
+                if ( n == 10) {
                     //Iniciar en pregunta 1
-                    npreguntas.length[0];
+                    pregunta = pregunta[0];
                     //Pantalla de juego terminado
                     if( mostrar_pantalla_juego_terminado) {
-                        
-                        swal
+                        function swal(){
+                            swal
                         .fire({
                             title: "Juego finalizado",
                             text:
@@ -56,7 +56,11 @@
                         preguntas_correctas = 0;
                         valor = 0;
                         return npreguntas = [];
+                        }
+                        
                     }
+
+                    n++;
 
                     
                 }
@@ -85,11 +89,11 @@
 
 
             
-            if(preguntas_hechas > 6 && preguntas_hechas < 12){
+            if(preguntas_hechas > 12 && preguntas_hechas < 20){
                 //Iniciar en pregunta 1
-                npreguntas[5];
+                pregunta[10];
                 //Función escogerPreguntaAleatoria2
-                    function escogerPreguntaAleatoria2(){
+                    function escogerPreguntaAleatoria(){
                         let n;
                         if (preguntas_aleatorias){
                             n = Math.floor(Math.random() * interprete_bp1.length);
@@ -103,20 +107,13 @@
                             if(n > 12) { // cambié interprete_bp1.length por 5
                                 n = 0;
                             }
-                            if (npreguntas.length == 12) {
+                            if (pregunta == pregunta[12]) {
                                 
                                 //Iniciar en pregunta 6
-                                npreguntas[5];
+                                npreguntas[10];
                                 //Pantalla de juego terminado
                                 if( mostrar_pantalla_juego_terminado) {
-                                    swal
-                                    .fire({
-                                        title: "Juego finalizado",
-                                        text:
-                                        "Puntuación: " + preguntas_correctas + "/" + preguntas_hechas + "   Dinero: " + 
-                                + valor
-                                    });
-                                    return npreguntas = [];
+                                    swal();
                                 }
                                 //En esta parte se reinicia el juego
                                 preguntas_hechas = 0;
@@ -132,13 +129,7 @@
                     }
 
                 //Pantalla de juego terminado
-                swal.fire({
-                    title: "Juego finalizado",
-                    text:
-                    "Puntuación: " + (preguntas_correctas) + "/" + (preguntas_hechas) + " Dinero: " + 
-                    + valor,
-                });
-                return npreguntas = [];
+                
             }
 
             if (preguntas_correctas > 0){
@@ -196,26 +187,26 @@
                 valor = 0;
                 //Iniciar en pregunta 1
                 if(npreguntas > 0 && npreguntas < 5){
-                    npreguntas.length[0];
+                    pregunta = pregunta[0];
+                    swal();
                 }else if(npreguntas >= 5 && npreguntas < 10){
-                    npreguntas.length[4]
+                    pregunta = pregunta[5];
+                    swal();
                 }else if(npreguntas >= 10 && npreguntas < 15){
-                    npreguntas.length[9]
+                    pregunta = pregunta[10];
+                    swal();
                 }else if(npreguntas >= 15 && npreguntas < 20){
-                    npreguntas.length[14]
+                    pregunta = pregunta[15];
+                    swal();
                 }else if(npreguntas >= 20 && npreguntas < 25){
-                    npreguntas.length[19]
+                    pregunta = pregunta[20];
+                    swal();
                 }
                 
                 //Alert que finaliza el juego
-                swal
-                        .fire({
-                            title: "Juego finalizado, perdiste el puntaje acumulado",
-                            text:
-                            "Puntuación: " + preguntas_correctas + "/" + preguntas_hechas + "   Dinero: " + 
-                    + valor
-                        });
-                    }
+                swal();
+                }
+                
 
 
             for(let j = 0; j < 4; j++) {
